@@ -132,8 +132,50 @@
                             @if(number_format($total_p * 0.01, 0) < 100)
                                 <span>Need more coins</span>
                             @else
-                            <a href="#" class="btn btn-primary" title="Give Cashback"><span class="fas fa-gift"></span></a>
+
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{ $customer->id}}" title="Give Cashback">
+                                <span class="fas fa-gift"></span>
+                            </button>
                             @endif
+
+                            <div class="modal fade" id="exampleModal{{ $customer->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Send Cashback</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                        <form method="POST" action="">
+                                            @csrf
+                                            <div class="row">
+                                                <div class="col-md-6">
+
+                                                    <div class="form-group">
+                                                        <label>Total Purchase</label>
+                                                        <input type="text" name="total_purchase" value="{{ $total_p }}" class="form-control" readonly>
+                                                    </div>
+
+                                                    <input type="number" name="customer_id" value="{{ $customer->id }}" hidden>
+
+                                                </div>
+                                                <div class="col-md-6">
+
+                                                    <div class="form-group">
+                                                        <label>Cashback Amount</label>
+                                                        <input type="number" name="cashback_amount" value="{{ number_format(($total_p * 0.01),0)/10 }}" class="form-control" readonly>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <input type="submit" value="Send Reword" class="btn btn-success">
+                                        </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                         </td>
                     </tr>
                  

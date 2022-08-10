@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('points', function (Blueprint $table) {
+        Schema::create('subcat_discounts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->nullable();
-            $table->foreignId('order_id');
-            $table->integer('points');
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('set null');
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->bigInteger('vendor_id');
+            $table->bigInteger('subcategory_id');
+            $table->integer('dcl_discount');
+            $table->integer('vendor_discount');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('points');
+        Schema::dropIfExists('subcat_discounts');
     }
 };
