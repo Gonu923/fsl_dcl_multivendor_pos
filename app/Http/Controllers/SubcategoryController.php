@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subcategory;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -75,7 +76,8 @@ class SubcategoryController extends Controller
      */
     public function edit(Subcategory $subcategory)
     {
-        //
+        $categories = Category::all();
+        return view('sub-categories.edit', compact('subcategory','categories'));
     }
 
     /**
@@ -87,7 +89,22 @@ class SubcategoryController extends Controller
      */
     public function update(Request $request, Subcategory $subcategory)
     {
-        //
+        $subcategory->name = $request->name;
+        if ($request->hasFile('image')) {
+            // Delete old avatar
+            if ($subcategory->image) {
+                Storage::delete($subcategory->image);
+            }
+            // Store avatar
+            $avatar_path = $request->file('image')->store('subcategories', 'public');
+            // Save to Database
+            $subcategory->image = $avatar_path;
+        }
+
+        if (!$subcategory->save()) {
+            return redirect()->back()->with('error', 'Sorry, there\'re a problem while updating sub category.');
+        }
+        return redirect()->route('subcategories.index')->with('success', 'Success, your sub category have been updated.');
     }
 
     /**
