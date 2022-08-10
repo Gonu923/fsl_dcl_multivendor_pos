@@ -41,6 +41,7 @@ class HomeController extends Controller
         $employees_count = Employee::count();
         $total_commissions = Task::all()->sum('received_amount');
         $due_collections = Task::where('received_amount', null)->sum('total_amount');
+        $suppliers_count = Vendor::where('type', 'Wholeseller')->count();
         $all_commissions = Task::all()->sum('total_amount');
 
 
@@ -69,6 +70,7 @@ class HomeController extends Controller
             'due_collections' => $due_collections,
             'all_commissions' => $all_commissions,
             'total_sale' => $total_sale,
+            'suppliers_count' => $suppliers_count,
         ]);
     }
 }

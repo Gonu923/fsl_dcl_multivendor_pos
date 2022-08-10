@@ -117,7 +117,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h4>150</h4>
+                        <h4>{{ $suppliers_count }}</h4>
                         <p>Total Supplier</p>
                     </div>
                     <div class="icon">

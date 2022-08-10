@@ -3,7 +3,7 @@
 @section('title', 'Sub Category List')
 @section('content-header', 'Sub Category List')
 @section('content-actions')
-    <a href="{{ route('subcategories.create') }}" class="btn btn-primary">Add Sub Category</a>
+    <a href="{{ route('categories.create') }}" class="btn btn-primary">Add Category</a>
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
@@ -30,7 +30,7 @@
                                 <td>{{$subcat->id}}</td>
                                 <td>{{$subcat->category_id}}</td>
                                 <td>{{$subcat->name}}</td>
-                                <td>{{ $subcat->image }}</td>
+                                <td><img src="{{ $subcat->getSubCategoryImage() }}" alt="{{ $subcat->getSubCategoryImage() }}" style="width: 50px; height: 30px;"></td>
                                 <td>
                                     <a href="{{ route('subcategories.edit', $subcat) }}" class="btn btn-primary"><i
                                             class="fas fa-edit"></i></a>
@@ -52,6 +52,7 @@
                 </h4>
                 <div class="card-body">
                     <form action="{{ route('subcategories.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group">
                             <label>Sub Category Name</label>
                             <div>
@@ -71,6 +72,9 @@
                             <div>
                                 <select name="category_id" class="form-control">
                                     <option>Choose</option>
+                                    @foreach($cats as $cat)
+                                        <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

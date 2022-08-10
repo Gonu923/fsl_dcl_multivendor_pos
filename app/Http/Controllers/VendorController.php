@@ -8,6 +8,7 @@ use App\Http\Requests\StoreVendorRequest;
 use App\Http\Requests\UpdateVendorRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
+use App\Models\Subcategory;
 
 class VendorController extends Controller
 {
@@ -29,8 +30,9 @@ class VendorController extends Controller
         $inactive_count = Vendor::where('status', 0)->count();
         $vendors_count = Vendor::count();
         $categories = Category::all();
+        $subcats = Subcategory::all();
         $total_sale = Payment::all()->sum('amount');
-        return view('vendors.index', compact('categories', 'vendors_count','active_count','inactive_count', 'total_sale'))->with('vendors', $vendors);
+        return view('vendors.index', compact('categories', 'vendors_count','active_count','inactive_count', 'total_sale', 'subcats'))->with('vendors', $vendors);
     }
 
     /**
@@ -41,7 +43,8 @@ class VendorController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('vendors.create', compact('categories'));
+        $subcats = Subcategory::all();
+        return view('vendors.create', compact('categories', 'subcats'));
     }
 
     /**
@@ -88,6 +91,10 @@ class VendorController extends Controller
             'address' => $request->address,
             'nid' => $request->nid,
             'category_id' => $request->category_id,
+            'subcat_id' => $request->subcat_id,
+            'type' => $request->type,
+            'dcl_discount' => $request->dcl_discount,
+            'vendor_discount' => $request->vendor_discount,
             'trade_license' => $file_path,
             'contact_no' => $request->contact_no,
             'bkash' => $request->bkash,

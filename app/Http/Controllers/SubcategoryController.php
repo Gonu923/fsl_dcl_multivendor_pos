@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Subcategory;
+use App\Models\Category;
+use Illuminate\Http\Request;
 
 class SubcategoryController extends Controller
 {
@@ -15,7 +16,8 @@ class SubcategoryController extends Controller
     public function index()
     {
         $subcats = Subcategory::latest()->paginate(10);
-        return view('sub-categories.index', compact('subcats'));
+        $cats = Category::all();
+        return view('sub-categories.index', compact('subcats', 'cats'));
     }
 
     /**
@@ -36,7 +38,6 @@ class SubcategoryController extends Controller
      */
     public function store(Request $request)
     {
-
         $avatar_path = '';
 
         if ($request->hasFile('image')) {
@@ -44,12 +45,12 @@ class SubcategoryController extends Controller
         }
 
         $subcat = Subcategory::create([
-            'name' => $request->category_id,
+            'name' => $request->name,
             'image' => $avatar_path,
             'category_id' => $request->category_id,
         ]);
 
-        if (!$category) {
+        if (!$subcat) {
             return redirect()->back()->with('error', 'Sorry, there\'re a problem while creating sub category.');
         }
         return redirect()->route('subcategories.index')->with('success', 'Success, your sub category have been created.');
@@ -58,10 +59,10 @@ class SubcategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Subcategory $subcategory)
     {
         //
     }
@@ -69,10 +70,10 @@ class SubcategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Subcategory $subcategory)
     {
         //
     }
@@ -81,10 +82,10 @@ class SubcategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Subcategory $subcategory)
     {
         //
     }
@@ -92,11 +93,19 @@ class SubcategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Subcategory $subcategory)
     {
-        //
+        if ($subcategory->image) {
+            Storage::delete($subcategory->image);
+        }
+
+        $subcategory->delete();
+
+       return response()->json([
+           'success' => true
+       ]);
     }
 }

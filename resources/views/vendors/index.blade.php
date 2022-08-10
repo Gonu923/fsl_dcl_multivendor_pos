@@ -109,7 +109,7 @@
 
                         </td>
                         <td width="11.11%">{{$vendor->contact_no}}</td>
-                        <td width="14.22%"></td>
+                        <td width="14.22%">{{ $vendor->vendor_discount }}% + {{ $vendor->dcl_discount }}% = {{ $vendor->vendor_discount + $vendor->dcl_discount }}%</td>
                         <td width="11.11%">{{$vendor->commission}}%</td>
                         <td width="8%">
                             @if($vendor->status == 1)
