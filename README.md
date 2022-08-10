@@ -1,1 +1,3 @@
-# fsl_dcl_multivendor_pos
+# Multivendor POS 
+# Developed By Flyte Solutions LTD
+# For Dhaka Choice Ltd.
