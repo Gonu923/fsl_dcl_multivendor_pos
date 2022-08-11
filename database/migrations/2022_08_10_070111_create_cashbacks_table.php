@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('subcategories', function (Blueprint $table) {
+        Schema::create('cashbacks', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('customer_id');
+            $table->decimal('total_purchase');
+            $table->decimal('cashback_amount');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subcategories');
+        Schema::dropIfExists('cashbacks');
     }
 };
