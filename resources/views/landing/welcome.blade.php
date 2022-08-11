@@ -905,7 +905,7 @@
   <script src="{{asset('assets/vendor/bootstrap/js/owl.carousel.min.js')}} "></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="{{asset('assets/js/main.js')}} "></script>
   <script>
     // ========== header slider js function ===================
     $('.owl-carousel').owlCarousel({
