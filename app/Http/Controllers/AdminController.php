@@ -84,7 +84,7 @@ class AdminController extends Controller
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
-        $user->password = Hask::make($request->password);
+        $user->password = Hash::make($request->password);
         $user->role = $request->role;
         if (!$user->save()) {
             return redirect()->back()->with('error', 'Sorry, there\'re a problem while updating user.');

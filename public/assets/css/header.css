@@ -1,0 +1,206 @@
+/* font family style */
+@import url('https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Inter:wght@200&family=Italianno&family=Lilita+One&family=Poppins:wght@500&display=swap');
+
+.status_bar{
+    background-color: #FD6501;
+}
+.status-bar-left li {
+    list-style-type: none;
+    margin-right: 18px;
+    font-size: 20px;
+    color: white
+}
+
+.follow_us {
+    margin-right: 18px;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 0;
+}
+
+.status-bar-right a.link {
+    list-style-type: none;
+    margin-right: 18px;
+    font-size: 20px;
+    color: white
+}
+
+.nav-bg-color {
+    background-color: rgb(1, 63, 83);
+}
+
+
+.nav-logo {
+    width: 35px;
+    height: 50px;
+    transition: transform 0.9s;
+}
+
+.nav-logo:hover {
+    transform: scale(1.2);
+}
+
+/* -----------------custom togglers css style-------------- */
+.custom-toggler.navbar-toggler {
+    border-color: rgba(255, 165, 0, 1);
+    border-radius: 5px;
+
+}
+
+.custom-toggler.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 195, 3, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar .icon_color {
+    color: white;
+}
+
+.item {
+    color: white;
+}
+
+.logo_body {
+    width: 170px;
+    height: 110px;
+    box-sizing: block;
+}
+
+.nav-logo img {
+    width: 160px;
+    height: 90px;
+
+}
+
+.txt_color {
+    color: aliceblue !important;
+    font-family: 'Inter', sans-serif;
+    margin-left: 15px !important;
+    padding: 2px 8px;
+
+}
+
+.text-decoration {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.tex_color:hover {
+    color: black !important;
+}
+
+@media all and (transform-3d),
+(-webkit-transform-3d) {
+    .multi-item-carousel .carousel-inner>.item {
+        transition: 500ms ease-in-out left;
+        transition: 500ms ease-in-out all;
+        -webkit-backface-visibility: visible;
+        backface-visibility: visible;
+        transform: none !important;
+    }
+}
+
+.multi-item-carousel .carouse-control.left,
+.multi-item-carousel .carouse-control.right {
+    background-image: none;
+}
+
+h1 {
+    color: white;
+    font-size: 2.25em;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    text-shadow: 0px 2px 0px #000000;
+}
+
+/*  chat style css hare  */
+
+.open-button {
+    background-color: #0f47bd;
+    color: white;
+    padding: 16px 16px;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+    display: none;
+    position: fixed;
+    bottom: 5px;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+.chat_heading {
+    font-weight: 500;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    resize: none;
+    min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+
+@media only screen and (max-width:620px) {
+    .nav-logo img {
+        width: 100px;
+        background-color: aqua;
+        height: 115px;
+        transition: transform 0.9s;
+
+    }
+
+    .nav-logo:hover {
+        transform: scale(1.1);
+    }
+
+    .logo_body {
+        width: 100%;
+    }
+
+
+
+}

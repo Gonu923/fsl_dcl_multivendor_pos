@@ -4,21 +4,26 @@ use App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/admin', function () {
-    return redirect('/admin');
-});
+// This routes for Landing Page 
 
 Route::get('/', function(){
-    return view('welcome');
+    return view('landing.welcome');
 });
 
 Auth::routes();
 
+//This routes for Admin Panel 
+
+Route::get('/admin', function () {
+    return redirect('/admin');
+});
 
 Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('/', [Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/settings', [Controllers\SettingController::class, 'index'])->name('settings.index');
+    Route::get('/about', [Controllers\AboutController::class, 'index'])->name('about.index');
+
     Route::post('/settings', [Controllers\SettingController::class, 'store'])->name('settings.store');
     Route::post('/commissions/taskstore', [Controllers\TaskController::class, 'storeTask'])->name('commissions.taskstore');
     Route::get('/tasks', [Controllers\TaskController::class, 'index'])->name('tasks.index');

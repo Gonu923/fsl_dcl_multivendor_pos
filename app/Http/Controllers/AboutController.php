@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Customer;
@@ -11,23 +10,9 @@ use App\Models\Employee;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+class AboutController extends Controller
+{
     public function index()
     {
         $orders = Order::with(['items', 'payments'])->get();
@@ -45,7 +30,7 @@ class HomeController extends Controller
         $all_commissions = Task::all()->sum('total_amount');
 
 
-        return view('index', [
+        return view('about.index', [
             'orders_count' => $orders->count(),
             'income' => $orders->map(function($i) {
                 if($i->receivedAmount() > $i->total()) {
