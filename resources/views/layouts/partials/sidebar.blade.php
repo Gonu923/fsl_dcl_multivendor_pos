@@ -35,10 +35,31 @@
                     </a>
                 </li>
 
+                <li class="nav-item menu-is-opening menu-open">
+                    <a href="" class="nav-link {{ activeSegment('discounts') }}">
+                        <i class="nav-icon fas fa-percent"></i>
+                        <p>Discounts</p>
+                    </a>  
+                    <ul class="nav nav-treeview" style="display: block;">
+                        <li class="nav-item">
+                            <a href="" class="nav-link {{ activeSegment('catdiscounts') }}">
+                                <i class="nav-icon fas fa-cart-plus"></i>
+                                <p>Category Based Discounts</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link {{ activeSegment('subcatdiscounts') }}">
+                                <i class="fas fa-cart-arrow-down nav-icon"></i>
+                                <p>Sub Category Based Discounts</p>
+                            </a>
+                        </li>                        
+                    </ul>                      
+                </li>
+
                 <li class="nav-item has-treeview">
                     <a href="{{ route('products.index') }}" class="nav-link {{ activeSegment('products') }}">
                         <i class="nav-icon fas fa-percent"></i>
-                        <p>Discounts</p>
+                        <p>Products</p>
                     </a>
                 </li>
                 <li class="nav-item menu-is-opening menu-open">
@@ -116,9 +137,30 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('products.index') }}" class="nav-link {{ activeSegment('products') }}">
+                        <i class="nav-icon fas fa-cart-plus"></i>
+                        <p>Products</p>
+                    </a>
+                </li>
+                <li class="nav-item menu-is-opening menu-open">
+                    <a href="" class="nav-link">
                         <i class="nav-icon fas fa-percent"></i>
                         <p>Discounts</p>
-                    </a>
+                        <i class="fas fa-angle-left right"></i>
+                    </a>  
+                    <ul class="nav nav-treeview" style="display: block;">
+                        <li class="nav-item">
+                            <a href="" class="nav-link {{ activeSegment('catdiscounts') }}">
+                                <i class="nav-icon fas fa-cart-plus"></i>
+                                <p>Discount (Category)</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link {{ activeSegment('subcatdiscounts') }}">
+                                <i class="fas fa-cart-arrow-down nav-icon"></i>
+                                <p>Discount (Sub Category)</p>
+                            </a>
+                        </li>                        
+                    </ul>                      
                 </li>
                 <li class="nav-item menu-is-opening menu-open">
                     <a href="#" class="nav-link">
