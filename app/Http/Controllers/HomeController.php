@@ -45,7 +45,7 @@ class HomeController extends Controller
         $all_commissions = Task::all()->sum('total_amount');
 
 
-        return view('index', [
+        return view('home', [
             'orders_count' => $orders->count(),
             'income' => $orders->map(function($i) {
                 if($i->receivedAmount() > $i->total()) {

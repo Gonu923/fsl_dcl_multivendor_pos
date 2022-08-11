@@ -3,7 +3,7 @@
 @section('content-header', 'Dashboard')
 @section('content')
     <div class="container-fluid">
-        {{-- <div class="row">
+        <div class="row">
             <div class="col-lg col-6">
                 <!-- small box -->
                 <div class="small-box bg-info">

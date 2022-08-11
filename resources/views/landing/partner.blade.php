@@ -8,7 +8,7 @@
               <br> 
               <br> 
               <br> 
-              <h3>Contact</h3> 
+              <h3>Partner</h3> 
               <hr> 
               <br> 
               <br> 

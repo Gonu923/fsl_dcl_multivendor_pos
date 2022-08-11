@@ -4,11 +4,19 @@ use App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-// This routes for Landing Page 
+// These routes are for Landing Page . . . 
 
-Route::get('/', function(){
-    return view('landing.welcome');
-});
+
+Route::get('', [Controllers\Landings\LandingController::class, 'index']);
+
+Route::get('/about', [Controllers\Landings\LandingController::class, 'about'])->name('about');
+Route::get('/services', [Controllers\Landings\LandingController::class, 'services'])->name('services');
+Route::get('/message', [Controllers\Landings\LandingController::class, 'message'])->name('message');
+Route::get('/partner', [Controllers\Landings\LandingController::class, 'partner'])->name('partner');
+Route::get('/enterprise', [Controllers\Landings\LandingController::class, 'enterprise'])->name('enterprise');
+Route::get('/media', [Controllers\Landings\LandingController::class, 'media'])->name('media');
+Route::get('/contact', [Controllers\Landings\LandingController::class, 'contact'])->name('contact');
+
 
 Auth::routes();
 
@@ -22,7 +30,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('/', [Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/settings', [Controllers\SettingController::class, 'index'])->name('settings.index');
-    Route::get('/about', [Controllers\AboutController::class, 'index'])->name('about.index');
 
     Route::post('/settings', [Controllers\SettingController::class, 'store'])->name('settings.store');
     Route::post('/commissions/taskstore', [Controllers\TaskController::class, 'storeTask'])->name('commissions.taskstore');
